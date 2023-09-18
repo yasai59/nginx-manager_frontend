@@ -1,0 +1,48 @@
+.form-group {
+  margin-top: 1vmin;
+}
+
+.inputs {
+  display: flex;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+#setupErrors, #loginErrors {
+  width: 100%;
+}
+
+.submit {
+  display: flex;
+  margin-top: 2vmin;
+}
+
+.submitBtn {
+  width: 30%;
+  padding: 1vmin;
+  flex-grow: 1;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 0.25vmin;
+}
+
+.error {
+  color: red;
+  margin-top: 0.25rem;
+}
+
+#passwordSetup {
+  margin-right: 1vmin;
+}
