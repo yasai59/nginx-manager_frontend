@@ -12,8 +12,6 @@ export const UserProvider = ({ children }) => {
     localStorage.setItem("nombre", nombre);
     localStorage.setItem("token", token);
     axios.defaults.headers.common["x-token"] = token;
-
-    location.reload();
   };
 
   const logout = () => {

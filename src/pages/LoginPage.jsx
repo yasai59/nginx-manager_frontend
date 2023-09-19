@@ -17,14 +17,12 @@ export const LoginPage = () => {
   };
 
   // Ask backend if we have already done the setup
-  const [setupDone, setSetupDone] = useState(false);
+  const [setupDone, setSetupDone] = useState(true);
 
   useEffect(() => {
     axios.get("/api/setup").then((res) => {
       const data = res.data;
       setSetupDone(data.setup);
-
-      console.log(res);
     });
   }, []);
 
