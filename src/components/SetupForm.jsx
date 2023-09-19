@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
 
 import { PasswordChecker } from "./PasswordChecker";
+import { UserContext } from "../context/UserContext";
+
 import "./form.css";
 
 export const SetupForm = () => {
+  const { login } = useContext(UserContext);
+
   // handle the Setup form submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hello");
+    // send the data to the backend
+    try {
+      const res = await axios.post("/api/setup", {
+        user: username,
+        password,
+      });
+      login(username, res.data.token);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const [password, setPassword] = useState("");

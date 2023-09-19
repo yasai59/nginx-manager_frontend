@@ -12,7 +12,6 @@ export const App = () => {
 
   const autenticado = nombre && token;
 
-  axios.defaults.headers.common["x-token"] = token;
   axios.defaults.baseURL = "http://localhost:81";
 
   return (

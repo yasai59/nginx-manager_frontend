@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 export const LoginForm = () => {
+  const { login } = useContext(UserContext);
   // handle the Setup form submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hello");
+
+    try {
+      const res = await axios.post("/api/login", {
+        user: username,
+        password: password,
+      });
+
+      login(username, res.data.token);
+    } catch (e) {
+      setError("Invalid username or password");
+    }
   };
 
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
 
   return (
     <form onSubmit={handleSubmit}>
@@ -44,7 +58,7 @@ export const LoginForm = () => {
         </div>
       </div>
       <div className="submit">
-        <div id="loginErrors"></div>
+        <div id="loginErrors">{error}</div>
         <button
           className="submitBtn"
           type="submit"

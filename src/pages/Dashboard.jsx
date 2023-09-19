@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const { logout } = useContext(UserContext);
+
+  return (
+    <>
+      <p>Dashboard</p>
+      <br />
+      <button onClick={logout}>Logout</button>
+    </>
+  );
 };

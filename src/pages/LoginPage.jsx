@@ -1,4 +1,4 @@
-import React from "react";
+import axios from "axios";
 import "./LoginPage.css";
 
 import wall1 from "./assets/wallpapers/wall_1.jpg";
@@ -6,6 +6,7 @@ import wall2 from "./assets/wallpapers/wall_2.jpg";
 import wall3 from "./assets/wallpapers/wall_3.jpg";
 import { LoginForm } from "../components/LoginForm";
 import { SetupForm } from "../components/SetupForm";
+import { useEffect, useState } from "react";
 
 export const LoginPage = () => {
   const wallpapers = [wall1, wall2, wall3];
@@ -15,8 +16,17 @@ export const LoginPage = () => {
     return wallpapers[random];
   };
 
-  // TODO: Ask backend if we have already done the setup
-  const setupDone = true;
+  // Ask backend if we have already done the setup
+  const [setupDone, setSetupDone] = useState(false);
+
+  useEffect(() => {
+    axios.get("/api/setup").then((res) => {
+      const data = res.data;
+      setSetupDone(data.setup);
+
+      console.log(res);
+    });
+  }, []);
 
   return (
     <div

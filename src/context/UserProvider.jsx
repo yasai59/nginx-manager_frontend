@@ -11,10 +11,24 @@ export const UserProvider = ({ children }) => {
 
     localStorage.setItem("nombre", nombre);
     localStorage.setItem("token", token);
+    axios.defaults.headers.common["x-token"] = token;
+
+    location.reload();
+  };
+
+  const logout = () => {
+    setNombre("");
+    setToken("");
+
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("token");
+    axios.defaults.headers.common["x-token"] = "";
+
+    location.reload();
   };
 
   return (
-    <UserContext.Provider value={{ nombre, token, login }}>
+    <UserContext.Provider value={{ nombre, token, login, logout }}>
       {children}
     </UserContext.Provider>
   );
