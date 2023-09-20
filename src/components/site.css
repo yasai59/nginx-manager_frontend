@@ -1,0 +1,35 @@
+.site{
+  padding-bottom: 10vmin;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+ }
+
+ .site input{
+  padding-left: 1vmin;
+ }
+
+.url{
+  display: flex;
+  justify-content: space-between;
+}
+
+.url div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 1.5vmin;
+  width: 94.5%;
+}

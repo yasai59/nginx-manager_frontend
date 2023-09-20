@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { UserContext } from "./UserContext";
+import axios from "axios";
 
 export const UserProvider = ({ children }) => {
   const [nombre, setNombre] = useState(localStorage.getItem("nombre") || "");
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+
+  axios.defaults.headers.common["x-token"] = token;
 
   const login = (nombre, token) => {
     setNombre(nombre);
@@ -21,8 +24,6 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("nombre");
     localStorage.removeItem("token");
     axios.defaults.headers.common["x-token"] = "";
-
-    location.reload();
   };
 
   return (

@@ -1,0 +1,27 @@
+#sites {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5vmin;
+  padding: 2vmin;
+}
+
+@media (max-width: 1200px) {
+  #sites {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 925px) {
+  #sites {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vmin;
+  background-color: #706C61;
+  color: white;
+}

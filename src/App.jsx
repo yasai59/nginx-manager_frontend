@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import { UserContext } from "./context/UserContext";
 import { LoginPage } from "./pages/LoginPage";
