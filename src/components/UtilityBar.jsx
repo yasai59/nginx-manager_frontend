@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
-export const UtilityBar = ({ setSearch, search }) => {
+export const UtilityBar = ({ setSearch, search, update }) => {
   const [show, setShow] = useState(false);
   const [proxy, setProxy] = useState(true);
 
@@ -30,17 +30,19 @@ export const UtilityBar = ({ setSearch, search }) => {
   };
 
   const handleAdd = () => {
-    axios.post("/api/sites", {
-      title: siteName,
-      url: siteURL,
-      type: proxy ? "proxy" : "local",
-      ip: siteIP,
-      port: sitePort,
-    });
-
-    setTimeout(() => {
-      update();
-    }, 500);
+    axios
+      .post("/api/sites", {
+        title: siteName,
+        url: siteURL,
+        type: proxy ? "proxy" : "local",
+        ip: siteIP,
+        port: sitePort,
+      })
+      .then(() => {
+        setTimeout(() => {
+          update();
+        }, 500);
+      });
 
     setShow(false);
     setProxy(true);
