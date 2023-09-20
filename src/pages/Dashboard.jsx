@@ -4,12 +4,15 @@ import { UserContext } from "../context/UserContext";
 
 import "./dashboard.css";
 import { Site } from "../components/Site";
+import { UtilityBar } from "../components/UtilityBar";
 
 export const Dashboard = () => {
   const { logout } = useContext(UserContext);
 
   const [sites, setSites] = useState([]);
+  const [filteredSites, setFilteredSites] = useState([]); // TODO: Implementar el search
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
   const [refresh, setRefresh] = useState(false);
 
@@ -31,12 +34,19 @@ export const Dashboard = () => {
       });
   }, [refresh]);
 
+  useEffect(() => {
+    setFilteredSites(sites.filter((site) => site.title.includes(search)));
+  }, [search, sites]);
+
   return (
     <>
       <header>
         <h1>Nginx manager</h1>
         <button onClick={logout}>Logout</button>
       </header>
+      <div className="utility">
+        <UtilityBar setSearch={setSearch} search={search} update={update} />
+      </div>
       <p>{error}</p>
       {sites.length === 0 ? (
         <p style={{ textAlign: "center", color: "#949292" }}>
@@ -46,7 +56,7 @@ export const Dashboard = () => {
         <></>
       )}
       <section id="sites">
-        {sites.map((site) => {
+        {filteredSites.map((site) => {
           return <Site site={site} update={update} key={site.id} />;
         })}
       </section>

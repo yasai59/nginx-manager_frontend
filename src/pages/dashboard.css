@@ -17,6 +17,11 @@
   }
 }
 
+.utility {
+  width: 70%;
+  margin: 5vmin auto;
+}
+
 header {
   display: flex;
   justify-content: space-between;
