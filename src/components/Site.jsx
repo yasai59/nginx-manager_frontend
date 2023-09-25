@@ -2,6 +2,7 @@ import { Button, Card, Modal } from "react-bootstrap";
 import "./site.css";
 import { useState } from "react";
 import axios from "axios";
+import { FileUploader } from "react-drag-drop-files";
 
 export const Site = ({
   // example of a site, (and for autocomplete in vscode :P)
@@ -63,6 +64,10 @@ export const Site = ({
           update();
         }, 500);
       });
+  };
+
+  const handleChange = (files) => {
+    console.log(files);
   };
   return (
     <>
@@ -126,6 +131,12 @@ export const Site = ({
           ) : (
             <></>
           )}
+          <FileUploader
+            handleChange={handleChange}
+            onDrop={handleChange}
+            name="file"
+            multiple={true}
+          />
           <div className="buttons">
             <Button
               variant="outline-danger"
