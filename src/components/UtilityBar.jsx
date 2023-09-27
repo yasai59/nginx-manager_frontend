@@ -71,6 +71,7 @@ export const UtilityBar = ({ setSearch, search, update }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </InputGroup>
+      {/* Confirmation Menú */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add a site</Modal.Title>
