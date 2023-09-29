@@ -2,7 +2,6 @@ import { Button, Card, Modal } from "react-bootstrap";
 import "./site.css";
 import { useState } from "react";
 import axios from "axios";
-import { FileUploader } from "react-drag-drop-files";
 
 export const Site = ({
   // example of a site, (and for autocomplete in vscode :P)
@@ -122,7 +121,7 @@ export const Site = ({
                   value={display.port}
                   onChange={(input) =>
                     setDisplay((value) => {
-                      return { ...value, ip: input.target.value };
+                      return { ...value, port: input.target.value };
                     })
                   }
                 />
@@ -131,12 +130,6 @@ export const Site = ({
           ) : (
             <></>
           )}
-          <FileUploader
-            handleChange={handleChange}
-            onDrop={handleChange}
-            name="file"
-            multiple={true}
-          />
           <div className="buttons">
             <Button
               variant="outline-danger"
