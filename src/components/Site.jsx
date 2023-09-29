@@ -2,6 +2,7 @@ import { Button, Card, Modal } from "react-bootstrap";
 import "./site.css";
 import { useState } from "react";
 import axios from "axios";
+import { FileUploader } from "./FileUploader";
 
 export const Site = ({
   // example of a site, (and for autocomplete in vscode :P)
@@ -128,7 +129,7 @@ export const Site = ({
               </div>
             </>
           ) : (
-            <></>
+            <FileUploader site={site.id} />
           )}
           <div className="buttons">
             <Button
